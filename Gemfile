@@ -56,3 +56,7 @@ gem 'devise'
 gem 'active_hash'
 gem 'pry'
 gem 'htmlbeautifier'
+
+group :production do
+  gem 'rails_12factor'
+end
