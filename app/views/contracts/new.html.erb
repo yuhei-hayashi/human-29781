@@ -1,0 +1,74 @@
+<%= render "shared/header" %>
+<main>
+<div class="contents row">
+  <div class="container">
+    <h1>派遣契約新規登録</h1>
+    <%= form_with model: @contract, url: temporary_contracts_path(@temporary.id) ,local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+    <div class = "field">
+      <label class="form-text">取引先</label>
+      <span class="indispensable">必須</span>
+    </div>
+      <%= f.collection_select(:company_id, Company.all.order(:name), :id, :name, {}, {class:"select-box", id:"search-company"}) %>
+    <div class = "field">
+      <label class="form-text">業務内容</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :task_name, class:"text_box", id:"search-name", placeholder:"業務内容"%>
+    <div class = "field">
+      <label class="form-text">契約単価</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :price, class:"text_box", id:"search-name", placeholder:"契約単価"%>
+    <div class='field'>
+      <label class="form-text">契約開始日</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-birth-wrap'>
+      <%= raw sprintf(
+                  f.date_select(
+                    :start_day,
+                    class:'select-birth',
+                    id:"hire-date",
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: (Time.now.year - 5),
+                    end_year:(Time.now.year + 5),
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      </div>
+    <div class='field'>
+      <label class="form-text">契約終了日</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-birth-wrap'>
+      <%= raw sprintf(
+                  f.date_select(
+                    :finish_day,
+                    class:'select-birth',
+                    id:"hire-date",
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: (Time.now.year - 1),
+                    end_year:(Time.now.year + 10),
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      </div>
+      <div class = "field">
+      <label class="form-text">契約状況</label>
+      <span class="indispensable">必須</span>
+    </div>
+      <%= f.collection_radio_buttons(:status_id, Status.all, :id, :name, {}, {class:"radio-button", id:"search-company"}) %>
+      <div class = "field">
+      <label class="form-text">担当</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class = 'field'>
+      <%= f.collection_select(:user_id, User.all, :id, :user_name, {selected: current_user.id}, class:"select-box", id:"search-user") %>
+    </div>
+      <%= f.submit "新規作成" ,class: "submit_button"%>
+    <% end %>
+  </div>
+</div>
+</main>
+<%= render "shared/footer" %>

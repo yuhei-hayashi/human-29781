@@ -1,0 +1,61 @@
+<%= render "shared/header" %>
+<main>
+<div class = "show_tenporarys">
+<div class = "header_show">
+<h1>企業情報</h1>
+<div class = "edit-destroy">
+<%= link_to '企業情報を編集する' , edit_company_path(@company.id), class: 'edit-button'%>
+<%= link_to '企業情報を削除する' , company_path(@company.id), method: :delete, data: {confirm: '削除しますか？'}, class: 'edit-button'%>
+</div>
+</div>
+
+<table >
+  <tr>
+    <th class = "title">企業名</th>
+    <td><%= @company.name %></td>
+    <th class = "title">年商</th>
+    <td><%= number_to_currency(@company.annual_sales,:locale => 'en') %></td>
+    <th class = "title">資本金</th>
+    <td><%= number_to_currency(@company.capiral,:locale => 'en') %></td>
+    </tr>
+    <th class = "title">契約数</th>
+    <td><%= @status[:contracts_count] %></td>
+    <th class = "title">平均契約単価</th>
+    <td ><%= number_to_currency(@status[:average_prices],:locale => 'jp') %></td>
+    <th class = "title">通算契約数</th>
+    <td><%= @status[:contracts_allcount] %></td>
+    </tr>
+    <tr>
+    <th class = "title">HP</th>
+    <td colspan = "5"><%= link_to @company.hp ,@company.hp , class: "link_hp" if @company.hp.present? %></td>
+    </tr>
+  </table>
+  <div class = "company-contracts">
+  <h1>契約一覧</h1>
+  </div>
+  <table >
+  <tr>
+    <th class = "title">担当</th>
+    <th class = "title">派遣社員</th>
+    <th class = "title">業務内容</th>
+    <th class = "title">契約単価</th>
+    <th class = "title">契約期間</th>
+  </tr>
+    <%= render partial: 'contract', collection: @contracts %>
+  </table>
+  <div class = "company-contracts">
+  <h1>過去契約一覧</h1>
+  </div>
+  <table >
+  <tr>
+    <th class = "title">担当</th>
+    <th class = "title">派遣社員</th>
+    <th class = "title">業務内容</th>
+    <th class = "title">契約単価</th>
+    <th class = "title">契約期間</th>
+    <th class = "title">契約状況</th>
+  </tr>
+    <%= render partial: 'contract_all', collection: @contracts %>
+  </table>
+  </main>
+  <%= render "shared/footer" %>

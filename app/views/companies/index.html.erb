@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+<main>
+<div class="companies-search">
+    <h2 class="companies-search-title">検索フォーム</h2>
+    <%= form_with scope: :search ,url: search_temporarys_path, method: :get , local: true do |f| %>
+    <div>
+      <div class = "field">
+        企業名
+      </div>
+      <%= f.text_field :name, class:"text_box", id:"search-name", placeholder:"企業名"%>
+      <div class="submit_button">
+      <%= f.submit "検索する" ,class:"search-btn" %>
+      </div>
+    </div>
+    <% end %>
+</div>
+<div class = "index_companies">
+<div class = "header_contract">
+<h1>取引先一覧</h1>
+</div>
+<table >
+  <tr>
+    <th class = "title">企業名</th>
+    <th class = "title">年商</th>
+    <th class = "title">資本金</th>
+    <th class = "title">HP</th>
+    <th class = "title">詳細ページ</th>
+  </tr>
+  <%= render partial: 'company', collection: @companies %>
+  </table>
+  </div>
+  </main>
+  <%= render "shared/footer" %>

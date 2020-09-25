@@ -1,0 +1,124 @@
+<%= render "shared/header" %>
+<main>
+<div class="contents row">
+  <div class="container">
+    <h1>派遣社員新規登録</h1>
+        <%= render 'shared/error_messages', model: @temporary_address %>
+      <%= form_with url: temporary_path(@temporary.id),method: :patch ,local: true do |f| %>
+    <div class = "field">
+      <label class="form-text">氏名</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :full_name, value: @temporary.full_name, class:"text_box", id:"search-name", placeholder:"氏名"%>
+    <div class = "field">
+      <label class="form-text">カナ</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :full_name_reading,value: @temporary.full_name_reading, class:"text_box", id:"search-name", placeholder:"カナ"%>
+    <div class='field'>
+      <label class="form-text">メールアドレス</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.email_field :mail, value: @temporary.mail,class:"text_box", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+    <div class='field'>
+          <label class="form-text">電話番号</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :telephone,value: @temporary.telephone, class:"text_box", id:"phone-number", placeholder:"例）09012345678",maxlength:"11"%>
+    <div class = "field">
+      <label class="form-text">契約情報</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_radio_buttons(:contract_status_id,ContractStatus.all, :id , :name , {checked: @temporary.contract_status_id},{class:"radio-button", id:"search-contract"})%>
+    <div class='field'>
+      <label class="form-text">入社日</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-birth-wrap'>
+      <%= raw sprintf(
+                  f.date_select(
+                    :hire_date,
+                    class:'select-birth',
+                    id:"hire-date",
+                    use_month_numbers: true,
+                    start_year: (Time.now.year + 1),
+                    end_year: 1930,
+                    default:@temporary.hire_date,
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    </div>
+    <div class = "field">
+      <label class="form-text">分野</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_radio_buttons(:genre_id, Genre.all, :id, :name, {checked: @temporary.genre_id}, {class:"check-box", id:"search-genre"}) %>
+    <div class='field'>
+      <label class="form-text">生年月日</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-birth-wrap'>
+      <%= raw sprintf(
+                  f.date_select(
+                    :birthday,
+                    class:'select-birth',
+                    id:"birth-date",
+                    use_month_numbers: true,
+                    start_year: 1930,
+                    end_year: (Time.now.year - 5),
+                    default:@temporary.birthday,
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    </div>
+    <div class='field'>
+          <label class="form-text">郵便番号</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :post_code, value: @address.post_code, class:"text_box", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+    <div class='field'>
+          <label class="form-text">都道府県</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {selected: @address.prefecture_id}, {class:"select-box", id:"prefecture"}) %>
+    <div class='field'>
+          <label class="form-text">市区町村</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :city , value: @address.city, class:"text_box", id:"city", placeholder:"例）横浜市緑区"%>
+    <div class='field'>
+          <label class="form-text">番地</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_field :house_number, value: @address.house_number, class:"text_box", id:"addresses", placeholder:"例）青山1-1-1"%>
+    <div class='field'>
+          <label class="form-text">建物名</label>
+          <span class="form-any">任意</span>
+        </div>
+        <%= f.text_field :building_name, value: @address.building_name, class:"text_box", id:"building", placeholder:"例）柳ビル103"%>
+    <div class="pdf-upload">
+      <div class="weight-bold-text">
+        履歴書
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :resume, id:"temporary-resume" %>
+      </div>
+    </div>
+    <div class="pdf-upload">
+      <div class="weight-bold-text">
+        スキルシート
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :skillsheet, id:"temporary-skilsheet" %>
+      </div>
+    </div>
+    <%= f.submit "編集" ,class: "submit_button"%>
+    <% end %>
+  </div>
+</div>
+</main>
+<%= render "shared/footer" %>

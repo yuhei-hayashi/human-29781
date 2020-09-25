@@ -1,0 +1,84 @@
+.calendar {
+  width: 65vw;
+  display: flex;
+  flex-wrap: wrap;
+  /* position: relative;
+  top: 0; */
+  margin-left: 5vw;
+}
+
+.item {
+  width: 20%;
+  height: 50vh;
+}
+
+.date {
+  height: 5vh;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.item:nth-child(even) .date{
+  background-color:  #eee;
+}
+
+.item:nth-child(odd) .content{
+  background-color:  #eee;
+}
+
+.content {
+  min-height: 25vh;
+  padding: 5px;
+  height: 45vh;
+  white-space: nowrap;
+  overflow: scroll;
+  margin: 0;
+}
+
+
+.meeting-new{
+  border: black solid 1px;
+  padding: 50px;
+  width: 500px;
+}
+
+.plan-list {
+  margin: 1vh 0 0 0;
+}
+
+.meeting-show-path{
+  font-style: none;
+  color: blue;
+}
+
+.temporary-show-path{
+  font-style: none;
+  color: indigo;
+}
+
+.meetings{
+  display: flex;
+  padding: 200px 50px 0 50px;
+}
+
+.calendar_title{
+  margin: 20px 5vw;
+}
+
+.calendar-index {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /* position: relative;
+  top: 0; */
+}
+
+.index_all_meetings{
+margin-top: 100px;
+}
+
+.index_meetings{
+  padding: 0 50px;
+}

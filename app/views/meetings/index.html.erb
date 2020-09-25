@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+<main>
+<div class = "index_meetings">
+  <div>
+    <div class = "header_contract">
+      <h1 ><%= "打ち合わせ予定"%></h1>
+      <div class = "contract-create">
+        <%= link_to '新規作成' , meeting_search_temporary_path , class: 'edit-button'%>
+      </div>
+    </div>
+    <div class = "calendar-index">
+      <%= render partial: 'meetings/day', collection: @week_days %>
+    </div>
+  </div>
+  <div class = "index_all_meetings">
+    <div class = "header_contract">
+      <h1>打ち合わせ一覧</h1>
+    </div>
+    <table>
+      <tr>
+        <th>日時</th>
+        <th>派遣社員</th>
+        <th>企業名</th>
+        <th>担当</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+      <%= render partial: 'meeting', collection: @meetings %>
+    </table>
+  </div>
+</div>
+</main>
+<%= render "shared/footer" %>

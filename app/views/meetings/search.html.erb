@@ -1,0 +1,52 @@
+
+<%= render "shared/header" %>
+<main>
+<div class="temporarys-search">
+    <h2 class="temporarys-search-title">検索フォーム</h2>
+    <%= form_with scope: :search, url: meeting_search_temporary_path, method: :get ,local: true do |f| %>
+    <div>
+      <div class = "field">
+        氏名
+      </div>
+      <%= f.text_field :full_name_reading, class:"text_box", id:"search-name", placeholder:"氏名・カナ"%>
+      <div class = "field">
+        社員番号
+      </div>
+      <%= f.text_field :temporary_number, class:"text_box", id:"search-number", placeholder:"社員番号"%>
+      <div class="submit_button">
+      <%= f.submit "検索する" ,class:"search-btn" %>
+      </div>
+    </div>
+    <% end %>
+</div>
+
+<div class = "index_temporarys">
+<div class = "search_result">
+<h2>技術者選択</h2>
+<% if @search_params[:full_name_reading].present? %>
+<span class = "search-item">
+<%= "氏名： #{@search_params[:full_name_reading]}"%>
+</span>
+<% end %>
+<% if @search_params[:temporary_number].present? %>
+<span class = "search-item">
+<%= "社員番号： #{@search_params[:temporary_number]}"%>
+</span>
+<% end %>
+</div>
+<table>
+  <tr>
+    <th class = "temporary_number">社員番号</th>
+    <th class = "name">氏名</th>
+    <th class = "age">年齢</th>
+    <th class = "genre">分野</th>
+    <th class = "address">居住地</th>
+    <th class = "contract_status">契約情報</th>
+    <th class = "company">配属先</th>
+    <th class = "path_show">打ち合わせ</th>
+  </tr>
+  <%= render partial: 'temporary', collection: @temporarys %>
+</table>
+</div>
+</main>
+<%= render "shared/footer" %>

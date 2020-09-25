@@ -1,0 +1,42 @@
+<%= render "shared/header" %>
+<main>
+<div class="contents row">
+  <div class="container">
+    <h1>取引先情報新規登録</h1>
+      <%= form_with model: @company, url: companies_path,local: true do |f| %>
+       <%= render 'shared/error_messages',model: f.object %> 
+    <div class = "field">
+      <label class="form-text">企業名</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :name, class:"text_box", id:"company-name", placeholder:"(株)〇〇"%>
+    <div class = "field">
+      <label class="form-text">年商</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class = "money-form">
+    <%= f.text_field :annual_sales, class:"text_box", id:"annual_sales", placeholder:"(例)100,000,000"%>
+    <div>
+    <%= "万円"%>
+    </div>
+    </div>
+    <div class='field'>
+      <label class="form-text">資本金</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class = "money-form">
+    <%= f.text_field :capiral,class:"text_box", id:"capiral", placeholder:"(例)50,000,000" %>
+    <div>
+    <%= "万円"%>
+    </div>
+    </div>
+    <div class='field'>
+          <label class="form-text">HP</label>
+        </div>
+        <%= f.text_field :hp, class:"text_box", id:"hp", placeholder:"URL"%>
+    <%= f.submit "新規作成" ,class: "submit_button"%>
+    <% end %>
+  </div>
+</div>
+</main>
+<%= render "shared/footer" %>

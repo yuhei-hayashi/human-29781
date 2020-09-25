@@ -1,0 +1,7 @@
+<tr>
+    <td class = "company-name"><%= company.name %></td>
+    <td class = "company-annual_sales"><%= number_to_currency(company.annual_sales,:locale => 'en') %></td>
+    <td class = "company-capiral"><%= number_to_currency(company.capiral,:locale => 'en') %></td>
+    <td class = "company-ho"><%= link_to company.hp ,company.hp, class: "link_hp" if company.hp.present? %></td>
+    <td class = "path_show"><%= link_to '詳細ページへ', company_path(company.id) , class: 'edit-button' %></td>
+  </tr>

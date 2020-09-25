@@ -1,0 +1,8 @@
+<tr>
+    <td><%= contract_all.user.user_name %></td>
+    <td><%= contract_all.temporary.full_name %></td>
+    <td><%= contract_all.task_name %></td>
+    <td><%= number_to_currency(contract_all.price,:locale => 'jp') %></td>
+    <td><%= contract_all.start_day.to_s + " ~ " + contract_all.finish_day.to_s %></td>
+    <td><%= contract_all.status.name %></td>
+  </tr>

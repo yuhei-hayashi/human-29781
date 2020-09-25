@@ -1,0 +1,10 @@
+<tr>
+    <td><%= contract.company.name %></td>
+    <td><%= contract.task_name %></td>
+    <td><%= number_to_currency(contract.price,:locale => 'jp') %></td>
+    <td><%= contract.start_day.to_s + " ~ " + contract.finish_day.to_s %></td>
+    <td><%= contract.user.user_name %></td>
+    <td><%= contract.status.name %></td>
+    <td><%= link_to '更新・編集' , edit_temporary_contract_path(@temporary.id,contract.id) , class: 'edit-button'%></td>
+    <td><%= link_to '削除' , temporary_contract_path(@temporary.id,contract.id), method: :delete , class: 'edit-button',data: {confirm: '削除しますか？'}%></td>
+  </tr>

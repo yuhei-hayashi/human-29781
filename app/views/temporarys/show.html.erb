@@ -1,0 +1,86 @@
+<%= render "shared/header" %>
+
+<div class = "show_tenporarys">
+<div class = "header_show">
+<h1>基本情報</h1>
+<div class = "edit-destroy">
+<%= link_to '基本情報を編集する' , edit_temporary_path(@temporary.id), class: 'edit-button'%>
+<%= link_to '社員情報を削除する' , temporary_path(@temporary.id), method: :delete, data: {confirm: '削除しますか？'}, class: 'edit-button'%>
+</div>
+</div>
+<table >
+  <tr>
+    <th class = "title">社員番号</th>
+    <td><%= @temporary.temporary_number %></td>
+    <th class = "title">氏名</th>
+    <td><%= @temporary.full_name %></td>
+    <th class = "title">読み仮名</th>
+    <td><%= @temporary.full_name_reading %></td>
+    <tr>
+    <th class = "title">年齢</th>
+    <td><%= (Date.today.strftime('%Y%m%d').to_i - @temporary.birthday.strftime('%Y%m%d').to_i) / 10000 %></td>
+    <th class = "title">生年月日</th>
+    <td><%= @temporary.birthday %></td>
+    </tr>
+    </tr>
+    <tr>
+    <th class = "title">郵便番号</th>
+    <td ><%= @address.post_code %></td>
+    <th class = "title">住所</th>
+    <td colspan="3" ><%= @address.prefecture.name + @address.city + @address.house_number + @address.building_name %></td>
+    </tr>
+    <tr>
+    <th class = "title">分野</th>
+    <td ><%= @temporary.genre.name %></td>
+    <th class = "title">契約情報</th>
+    <td ><%= @temporary.contract_status.name %></td>
+    <th class = "title">入社日</th>
+    <td ><%= @temporary.hire_date %></td>
+    </tr>
+    <tr>
+    <th class = "title">電話番号</th>
+    <td ><%= @temporary.telephone %></td>
+    <th class = "title">メールアドレス</th>
+    <td colspan="3" ><%= @temporary.mail %></td>
+    </tr>
+    <tr>
+    <th class = "title">履歴書</th>
+    <td><%= link_to '履歴書' , rails_blob_path(@temporary.resume),class: "link_resume" if @temporary.resume.attached? %></td>
+    <th class = "title">経歴書</th>
+    <td><%= link_to '経歴書' , rails_blob_path(@temporary.skillsheet),class: "link_resume" if @temporary.skillsheet.attached? %><td>
+    </tr>
+  </table>
+<div class = "contract-temporary">
+  <div class = "header_contract">
+    <h1>契約情報</h1>
+    <div class = "contract-create">
+      <%= link_to '新規作成' , new_temporary_contract_path(@temporary.id), class: 'edit-button'%>
+    </div>
+  </div>
+  <table >
+    <tr>
+      <th class = "title">取引先</th>
+      <th class = "title">業務内容</th>
+      <th class = "title">契約単価</th>
+      <th class = "title">契約期間</th>
+      <th class = "title">担当</th>
+      <th class = "title">契約状況</th>
+      <th class = "title">更新・編集</th>
+      <th class = "title">削除</th>
+    </tr>
+    <%= render partial: 'contract', collection: @contracts %>
+  </table>
+  <div class = "contract-temporary">
+    <div class = "header_contract">
+      <h1 ><%= "打ち合わせ予定"%></h1>
+      <div class = "contract-create">
+        <%= link_to '新規作成' , new_temporary_meeting_path(@temporary.id), class: 'edit-button'%>
+      </div>
+    </div>
+    <div class = "calendar-index">
+      <%= render partial: 'meetings/day', collection: @week_days %>
+    </div>
+  </div>
+</div>
+</div>
+  <%= render "shared/footer" %>

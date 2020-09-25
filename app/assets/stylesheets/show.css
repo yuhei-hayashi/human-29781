@@ -1,0 +1,54 @@
+.show_tenporarys,.index_meetings{
+  padding: 150px 50px 0 50px;
+  /* margin-bottom: 100px; */
+}
+
+.header_show,.header_contract,.company-contracts{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 100px;
+}
+
+.edit-destroy{
+  display: flex;
+}
+
+.edit-button{
+  margin: 0 10px;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 16px;        /* 文字サイズ */
+  cursor        : pointer;     /* カーソル   */
+  background    : #eee;     /* 背景色     */
+  color         : black;     /* 文字色     */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 1px solid black;    /* 枠の指定 */
+  width: 200px;
+  line-height   : 1em;         /* 1行の高さ  */
+  padding: 5px;
+  text-align: center;
+}
+
+.edit-button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #eee;     /* 背景色     */
+  background    : black;     /* 文字色     */
+  text-align: center;
+}
+
+.contract-temporary{
+  padding: 100px 0;
+}
+
+.company-contracts{
+  margin-top: 100px;
+}
+
+.link_resume{
+  font-style: none;
+  color: blue;
+}
+
+.link_hp{
+  font-style: none;
+  color: blue;
+}

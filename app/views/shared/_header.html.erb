@@ -1,0 +1,47 @@
+<header>
+    <h1>
+        <%= link_to 'TOP MENU' , root_path %>
+    </h1>
+    <nav class="pc-nav">
+      <ul class="header-dropmenu">
+        <li>
+          <a href="#">人材情報</a>
+            <ul>
+              <li><%= link_to '一覧表示' , root_path %></li>
+              <li><%= link_to '新規作成' , new_temporary_path %></li>
+            </ul>
+        </li>
+        <li>
+          <a href="#">取引先情報</a>
+            <ul>
+              <li><%= link_to '一覧表示' , companies_path %></li>
+              <li><%= link_to '新規作成' , new_company_path %></li>
+            </ul>
+        </li>
+        <li>
+          <a href="#">打ち合わせ</a>
+            <ul>
+              <li><%= link_to '一覧表示' , meetings_path %></li>
+              <li><%= link_to '新規作成' , meeting_search_temporary_path %></li>
+            </ul>
+        </li>
+        <li>
+        <% if user_signed_in? then%>
+        <%= link_to current_user.user_name, "#"  %>
+        <% else %>
+        <%= link_to 'ログイン・新規登録' , "#"  %>
+        <% end %>
+        <% if user_signed_in? then%>
+            <ul>
+              <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete, class: "logout" %></li> 
+             </ul>
+              <% else %>
+               <ul>
+              <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+              <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+              </ul>
+              <% end %>
+        </li>
+      </ul>
+    </nav>
+</header>

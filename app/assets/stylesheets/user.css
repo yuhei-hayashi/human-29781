@@ -1,0 +1,35 @@
+.contents{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+}
+.container{
+  /* border: black solid 1px; */
+  padding: 20px;
+  width: 500px;
+  padding-left: 100px;
+}
+
+.field{
+  margin: 10px 0;
+}
+
+.text_box{
+  width: 300px;
+  font-size: 16px;
+  padding: 5px 1px;
+}
+
+.submit_button{
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.registration_path{
+  margin: 10px 20px;
+  font-size: 20px;
+  font-style: none;
+  color: blue;
+}

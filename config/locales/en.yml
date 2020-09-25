@@ -1,0 +1,8 @@
+en:
+  number:
+    currency:
+      format:
+        unit: "万円"
+        format: "%n%u"
+        negative_format: "-%n%u"
+        precision: 0

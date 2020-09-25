@@ -1,0 +1,19 @@
+<tr>
+    <td class = "temporary_number"><%= temporary.temporary_number %></td>
+    <td class = "name"><%= temporary.full_name %></td>
+    <td class = "age"><%= (Date.today.strftime('%Y%m%d').to_i - temporary.birthday.strftime('%Y%m%d').to_i) / 10000 %></td>
+    <td class = "genre"><%= temporary.genre.name %></td>
+    <td class = "address"><%= temporary.address.prefecture.name %></td>
+    <td class = "contract_status"><%= temporary.contract_status.name %></td>
+    <td class = "company">
+      <% contracts = temporary.contracts %>
+      <% contracts.each do |contract| %>
+        <% if contract.status_id == 1 %>
+          <%= contract.company.name %>
+          <% break %>
+        <% end %>
+      <% end %>
+    </td>
+    <td class = "path_show"><%= link_to '新規登録', new_temporary_meeting_path(temporary.id) , class: 'edit-button' %></td>
+  </tr>
+

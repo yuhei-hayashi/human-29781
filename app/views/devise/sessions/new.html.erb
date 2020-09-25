@@ -1,0 +1,35 @@
+<%= render "shared/header" %>
+<div class="contents row">
+  <div class="container">
+    <h2>Log in</h2>
+    <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <div class="field">
+        <%= f.label :user_name %><span class="indispensable">：必須</span><br />
+        <%= f.text_field :user_name, autofocus: true, class: "text_box"%>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %><span class="indispensable">：必須</span><br />
+        <%= f.email_field :email , class: "text_box"%>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em><span class="indispensable">：必須</span>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "text_box" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><span class="indispensable">：必須</span><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "text_box" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "ログイン" ,class: "submit_button" %>
+        <%= link_to '新規作成画面へ',new_user_registration_path ,class: "registration_path" %>
+      </div>
+    <% end %>
+  </div>
+</div>

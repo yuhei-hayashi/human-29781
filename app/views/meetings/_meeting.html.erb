@@ -1,0 +1,8 @@
+<tr>
+    <td><%= meeting.day.strftime("%Y/%m/%d　") + meeting.time.strftime("%H:%M") %></td>
+    <td><%= meeting.temporary.full_name %></td>
+    <td><%= meeting.company_name %></td>
+    <td><%= meeting.user.user_name %></td>
+    <td><%= link_to '編集', edit_temporary_meeting_path(meeting.temporary.id,meeting.id) , class: 'edit-button' , id: meeting.id%></td>
+    <td><%= link_to '削除' , temporary_meeting_path(meeting.temporary.id,meeting.id), method: :delete , class: 'edit-button',data: {confirm: '削除しますか？'}%></td>
+</tr>
