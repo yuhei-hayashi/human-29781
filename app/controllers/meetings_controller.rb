@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :move_to_root
+  before_action :move_to_login
   before_action :find_meeting , only: [:edit , :update , :destroy]
   before_action :find_temporary , only: [:new , :create , :edit , :update , :destroy]
   before_action :define_week_day, only: [:new , :create , :edit , :update]

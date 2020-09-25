@@ -90,8 +90,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def move_to_root
-    redirect_to root_path unless user_signed_in?
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def reservation_search_params

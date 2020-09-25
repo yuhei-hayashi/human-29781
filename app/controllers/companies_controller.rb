@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :move_to_root
+  before_action :move_to_login
   before_action :find_company , only: [:show , :edit , :update , :destroy]
 
   def new

@@ -1,5 +1,5 @@
 class ContractsController < ApplicationController
-  before_action :move_to_root
+  before_action :move_to_login
   before_action :find_contract , except: [:new , :create]
   before_action :find_temporary
 

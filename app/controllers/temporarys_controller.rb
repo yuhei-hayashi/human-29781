@@ -1,5 +1,5 @@
 class TemporarysController < ApplicationController
-  before_action :move_to_root ,except: :index
+  before_action :move_to_login 
   before_action :find_temporary , only: [:show, :edit, :update, :destroy]
   before_action :find_address , only: [:show, :edit, :update]
   before_action :set_temporary_address , only: [:new, :edit]
