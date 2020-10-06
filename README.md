@@ -1,28 +1,4 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 # アプリ名
 
 human-29781
@@ -78,7 +54,7 @@ human-29781
 # 制作背景
 前職にて人材派遣の営業を行なっていました。その際日々変化する人材情報の管理に時間を取られ、業務効率が悪いと感じていました。  
 特に前職では待機社員の一覧情報をExcelで管理しており、詳細を調べる際は別手段をもって調べないといけないため同時に複数のツールを使い検索を行う必要がありました。  
-そこで前職の業務の効率を上げるためにはどのような機能を持ったシステムが必要か考え下記項目を満たすシステムがあれば効率が上がるという結論に至り、今回のアプリを作成しました。
+そこで前職の業務の効率を上げるためにはどのような機能を持ったシステムが必要か考えた結果、下記項目を満たすシステムがあれば効率が上がるという結論に至り、今回のアプリを作成しました。
 ## 必要な機能
 * 一覧表示画面での複数条件の検索機能
 * 詳細情報への簡易遷移
@@ -86,14 +62,20 @@ human-29781
 * 取引先ごとの契約情報の管理
 * 打ち合わせ日程の共有
 
-# DEMO
-
 # 工夫したポイント
- * 自動更新機能
+ * 自動変更機能
  契約変更時の契約状況の変更や入社前社員の入社日の自動入社など自動で行うことが出来る作業は自動化を行なった。
+ * 社員番号振り分け
+ 入社時に社員番号が自動で振られるようになっている。入社前は社員番号０番で登録されるようになっている。
  * 打ち合わせ作成時の日程表示
  打ち合わせを新規作成する際、登録しようとしている社員の１週間分の打ち合わせが表示される。
  それによりダブルブッキングなどを防ぐことが出来る。
+
+
+# DEMO
+![人材情報新規登録画面](https://gyazo.com/6076b89aac086c27fdbca3110f808c1e"人材情報登録")
+
+
 
 # 開発環境
 * Ruby
