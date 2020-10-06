@@ -73,7 +73,7 @@ human-29781
 
 
 # DEMO
-![人材情報新規登録画面](https://gyazo.com/6076b89aac086c27fdbca3110f808c1e"人材情報登録")
+![人材情報新規登録画面](https://gyazo.com/6076b89aac086c27fdbca3110f808c1e "人材情報登録")
 
 
 
