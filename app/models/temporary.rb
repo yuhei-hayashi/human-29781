@@ -24,4 +24,3 @@ class Temporary < ApplicationRecord
   scope :company_id, -> (company_id){where(contracts:{company_id: company_id}) if company_id.present?}
   scope :status_id, -> (company_id){where(contracts:{status_id: 1}) if company_id.present?}
 end
-
